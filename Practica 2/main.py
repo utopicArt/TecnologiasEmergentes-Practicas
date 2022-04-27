@@ -17,22 +17,36 @@ def isUpperCase(text):
     return False
 
 def countWords(text):
-    counter = 0
-    for i in range(len(text)):
-        isNextBlank = text[i] != ' ' and text[i+1] == ' '
-        isBeforeBlank = text[i] != ' ' and text[i-1] == ' '
-        if isNextBlank or isBeforeBlank:
-            counter += 1
-        else:
-            counter = 1
-            break
+    counter = len(text.split())
     return counter
+
+def getWordsInText(text):
+    words = text.split(" ")
+    return words
+
+def reverseString(text):
+    return text[::-1]
+
+def setUpperCaseLetter(text):
+    word = getWordsInText(text)
+    words = []
+    for i in range(len(word)):
+        words.append(word[i][:-1] + word[i][-1].upper())
+    text = format(' '.join(words))
+
+    return text
 
 def main():
     text = input('Escriba el texto: ')
     print(f"La primer letra {'es' if isUpperCase(text) else 'no es'} mayuscula.")
 
     print(f'Hay {countWords(text)} palabras')
+
+    print(f'La cadena esta conformada por las siguietes palabra {getWordsInText(text)}')
+
+    print(f'Cadena invertida: {reverseString(text)}')
+
+    print(f'Ultima letra de cada palabra en mayúscula: {setUpperCaseLetter(text)}')
 
 if __name__ == '__main__':
     main()
