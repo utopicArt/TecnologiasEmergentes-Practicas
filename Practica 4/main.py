@@ -21,6 +21,7 @@ def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
 def main():
+    cls()
     optionSelected = int(input("""
     ======Sistema de manejo de clientes======
     
@@ -46,60 +47,71 @@ def createTemplate():
     userData = {}
     userData['customer'] = []
 
-    print(f"{'*'*37}\n*\tInformacion de Contacto\t\t\t*\n{'*'*37}")
-    name = input("Nombre:\t\t")
-    lastName = input("Apellidos:\t")
-    lastName = lastName.split(' ')
-    dateBirth = input("Fecha de nacimiento (dd/mm/yyyy): ")
-    dateBirth = dateBirth.split('/')
-    #ageCalculated = date.today().year - dateBirth
-    phone = input("Telefono:\t")
-    email = input("Correo electronico: ")
-    cls()
-    print(f"{'*' * 37}\n*\tInformacion de Empresa\t\t\t*\n{'*' * 37}")
-    company = input("Empresa:\t")
-    title = input("Cargo:\t\t")
-    cls()
-    print(f"{'*' * 37}\n*\t\t\tDomicilio\t\t\t\t*\n{'*' * 37}")
-    street = input("Calle:\t\t\t ")
-    houseExt = input("Numero exterior: ")
-    houseInt = input("Numero interior: ")
-    suburb = input("Colonia:\t\t ")
-    town = input("Municipio:\t\t ")
-    state = input("Estado:\t\t\t ")
-    postalCode =input("Codigo postal:\t ")
-
-    userData['customer'].append({})
-def saveDataFile():
-    filename = './bases/default.json'
-    files = [('JSON File', '*.json')]
-    base = {}
-    with open(filename, 'w') as outfile:
-        json.dump(base, outfile)
+    userData['customer'].append({
+        'client': {
+            'Contact_Information': {
+                'first_name': basicInformation(),
+                'last_name1': input("Apellido Paterno: "),
+                'last_name2': input("Apellido Materno: "),
+                'birthDay' : input("Dia de nacimiento: "),
+                'birthMonth': input("Mes de nacimiento: "),
+                'birthYear': int(input("Año de nacimiento: ")),
+                'phone': input("Telefono:\t\t\t"),
+                'email': input("Correo:\t\t\t  ")
+            },
+            'Job_Information': {
+                'company': jobInformation(),
+                'title': input("Cargo:\t\t")
+            },
+            'Billing_Information': {
+                'street': billingInformation(),
+                'houseExt': input("Numero exterior: "),
+                'houseInt': input("Numero interior: "),
+                'suburb': input("Colonia:\t\t "),
+                'city': input("Municipio:\t\t "),
+                'state': input("Estado:\t\t\t "),
+                'postalCode': input("Codigo postal:\t ")
+            }
+        }
+    })
+    with open('data.json', 'w') as file:
+        json.dump(userData, file, indent=4)
+    main()
 
 def showInformation():
     #Obtener los datos
-    print("showInformation")
+    with open('data.json') as file:
+        data = json.load(file)
+        for client in data['customer']:
+            print(client)
+            contact = client['client']['Contact_Information']
+            print(f'Nombre: {contact["first_name"]}')
+            print(f'Apellido Paterno: {contact["last_name1"]}')
+            print(f'Apellido Materno: {contact["last_name2"]}')
+            print(f'Fecha de nacimiento: {contact["birthDay"]}-{contact["birthMonth"]}-{contact["birthYear"]}')
+            print(f'Telefono: {contact["phone"]}')
+            print(f'Correo: {contact["email"]}')
 
 def showTemplate():
     #Mostrar la base - dejar al final
     print("showTemplate")
 
+def basicInformation():
+    print(f"{'*' * 37}\n*\tInformacion de Contacto\t\t\t*\n{'*' * 37}")
+    return input("Nombre:\t\t\t  ")
+
+def jobInformation():
+    cls()
+    print(f"{'*' * 37}\n*\tInformacion de Trabajo\t\t\t*\n{'*' * 37}")
+    return input("Empresa:\t")
+
+def billingInformation():
+    cls()
+    print(f"{'*' * 37}\n*\t\t\tDomicilio\t\t\t\t*\n{'*' * 37}")
+    return input("Calle:\t\t\t ")
+
 
 if __name__ == '__main__':
     #main()
-    data = {}
-    data['customer'] = []
-    data['customer'].append({
-        'client': {
-        'basic_information' : {
-            'first_name': input("Nombre:\t\t"),
-            'last_name': input("Apellidos:\t"),
-            'age': input("Edad: "),
-        },
-        'financial_information' : {
-            'amount': input("Enter an amount: ")
-        }}})
-    with open('data.json', 'w') as file:
-        json.dump(data, file, indent=4)
+    showInformation()
 

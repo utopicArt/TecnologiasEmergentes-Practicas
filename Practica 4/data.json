@@ -2,13 +2,28 @@
     "customer": [
         {
             "client": {
-                "basic_information": {
-                    "first_name": "asdasd",
-                    "last_name": "asd dsa",
-                    "age": "1"
+                "Contact_Information": {
+                    "first_name": "adrian",
+                    "last_name1": "marin",
+                    "last_name2": "alcala",
+                    "birthDay": "1",
+                    "birthMonth": "7",
+                    "birthYear": 1998,
+                    "phone": "3332132212",
+                    "email": "sdadsads"
                 },
-                "financial_information": {
-                    "amount": "2"
+                "Job_Information": {
+                    "company": "asd",
+                    "title": "asdas"
+                },
+                "Billing_Information": {
+                    "street": "asdsad",
+                    "houseExt": "assad",
+                    "houseInt": "asdasd",
+                    "suburb": "asdasd",
+                    "city": "asdsad",
+                    "state": "asdasd",
+                    "postalCode": "sadasd"
                 }
             }
         }
