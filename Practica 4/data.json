@@ -1,0 +1,16 @@
+{
+    "customer": [
+        {
+            "client": {
+                "basic_information": {
+                    "first_name": "asdasd",
+                    "last_name": "asd dsa",
+                    "age": "1"
+                },
+                "financial_information": {
+                    "amount": "2"
+                }
+            }
+        }
+    ]
+}

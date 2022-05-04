@@ -65,7 +65,7 @@ def listManager():
     #Punto 6 - Cubo de los elementos
     square = []
     for i in range(len(listNumsTemp)):
-        square.append(listNumsTemp[i] ** 2)
+        square.append(listNumsTemp[i] ** 3)
     for i in range(len(listNumsTemp)):
         print(f'El cuadrado de {listNumsTemp[i]} es {square[i]}')
 
