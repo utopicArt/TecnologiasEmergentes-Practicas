@@ -1,33 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Customer Manager</title>
-</head>
-<body>
-    <header>
-        <div class="elements">
-            <div id="topLeft">
-                <img src="images/crm.png" alt="logo">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="./js/tabController.js"></script>
+        <title>Customer Management</title>
+    </head>
+    <body>
+        <header>
+            <img src="images/crm.png" alt="logo" />
+            <input type="text" id="myInput" onclick="document.getElementById('defaultOpen').click();" onkeyup="searchEngine()" placeholder="Search" title="Type in a name">
+        </header>
+        <div class="container">
+            <button class="tablink" onclick="openPage('Contacts', this, 'red')" >
+                Contacts
+            </button>
+            <button class="tablink" onclick="openPage('Details', this, 'green')" id="defaultOpen">
+                Details
+            </button>
+            <button class="tablink" onclick="openPage('Manage', this, 'blue')">
+                Manage
+            </button>
+            <button class="tablink" onclick="openPage('Weather', this, 'orange')">
+                Weather
+            </button>
+
+            <div id="Contacts" class="tabcontent">
+                <h3>Contact Information</h3>
+
+                <ul id="myUL">
+                    <li><a href="#">Adele zamarripa</a></li>
+                    <li><a href="#">Agnes</a></li>
+        
+                    <li><a href="#">Billy cherokee</a></li>
+                    <li><a href="#">Bob anderson</a></li>
+        
+                    <li><a href="#">Calvin klein</a></li>
+                    <li><a href="#">Christina aguilera</a></li>
+                    <li><a href="#">Cindy la regia</a></li>
+                </ul>
             </div>
-            <div id="topMiddle">
-                <input type="text" placeholder="Search:"/>
-            </div>
-            <div id="topRight">
-                <div id="settings">
-                    <img src="images/settings.png" alt="settings">
+
+            <div id="Details" class="tabcontent">
+                <h3>Details</h3>
+                <div id="Information">
+                    <div id="basicInfo">
+                        <table style="width:100%">
+                            <tr>
+                              <th colspan="2">Basic Information</th>
+                            </tr>
+                            <tr>
+                              <td>First Name<br/><input type="text"></td>
+                              <td>Last Name<br/><input type="text"></td>
+                            </tr>
+                            <tr>
+                              <td>Birthday<br/><input type="date"></td>
+                              <td>Telephone<br/><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>Email<br/><input type="email"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Job Information</th>
+                              </tr>
+                              <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                              </tr>
+                              <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                              </tr>   
+                              <tr>
+                                <th colspan="2">Billing Information</th>
+                              </tr>
+                              <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                              </tr>
+                              <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                              </tr>                                                       
+                          </table>
+                    </div>
                 </div>
-        </div>
-        <div id="tabs">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="customers.php">Customers</a></li>
-                <li><a href="orders.php">Orders</a></li>
-            </ul>
-        </div>
-    </header>
-</body>
+            </div>
+
+            <div id="Manage" class="tabcontent">
+                <h3>Manage</h3>
+                <p>Get in touch, or swing by for a cup of coffee.</p>
+            </div>
+
+            <div id="Weather" class="tabcontent">
+                <h3>Weather</h3>
+                <p>Who we are and what we do.</p>
+            </div>
+        <script> document.getElementById("defaultOpen").click();</script>
+  </body>
 </html>
