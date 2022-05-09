@@ -14,16 +14,16 @@
             <input type="text" id="myInput" onclick="document.getElementById('defaultOpen').click();" onkeyup="searchEngine()" placeholder="Search" title="Type in a name">
         </header>
         <div class="container">
-            <button class="tablink" onclick="openPage('Contacts', this, 'red')" >
+            <button class="tablink" onclick="openPage('Contacts', this, 'red')"  title="Show all contacts on database">
                 Contacts
             </button>
-            <button class="tablink" onclick="openPage('Details', this, 'green')" id="defaultOpen">
+            <button class="tablink" onclick="openPage('Details', this, 'green')" id="defaultOpen" title="Show contact details">
                 Details
             </button>
-            <button class="tablink" onclick="openPage('Manage', this, 'blue')">
+            <button class="tablink" onclick="openPage('Manage', this, 'blue')" title="Create, Update or Delete contact">
                 Manage
             </button>
-            <button class="tablink" onclick="openPage('Weather', this, 'orange')">
+            <button class="tablink" onclick="openPage('Weather', this, 'orange')" title="Show contact location weather">
                 Weather
             </button>
 
@@ -66,24 +66,28 @@
                                 <th colspan="2">Job Information</th>
                               </tr>
                               <tr>
-                                <td>Jill</td>
-                                <td>Smith</td>
+                                <td>Company<br/><input type="text"></td>
+                                <td>Title<br/><input type="text"></td>
+                              </tr>  
+                              <tr>
+                                <th colspan="2">Billing Address</th>
                               </tr>
                               <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td>
-                              </tr>   
-                              <tr>
-                                <th colspan="2">Billing Information</th>
+                                <td>Country<br/><input type="text"></td>
+                                <td>State<br/><input type="text"></td>
                               </tr>
                               <tr>
-                                <td>Jill</td>
-                                <td>Smith</td>
-                              </tr>
+                                <td>City<br/><input type="text"></td>
+                                <td>Street<br/><input type="text"></td>                                
+                              </tr>  
                               <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td>
-                              </tr>                                                       
+                                  <td>Exterior Number<br/><input type="number"></td>
+                                  <td>Interior Number<br/><input type="number"></td>                                  
+                              </tr>    
+                              <tr>
+                                <td>Suburb<br/><input type="text"></td>
+                                  <td>Postal Code<br/><input type="text"></td>
+                              </tr>                                                 
                           </table>
                     </div>
                 </div>
@@ -91,12 +95,56 @@
 
             <div id="Manage" class="tabcontent">
                 <h3>Manage</h3>
-                <p>Get in touch, or swing by for a cup of coffee.</p>
+                <div id="basicInfo">
+                    <table style="width:100%">
+                        <tr>
+                          <th colspan="2">Basic Information</th>
+                        </tr>
+                        <tr>
+                          <td>First Name<br/><input type="text"></td>
+                          <td>Last Name<br/><input type="text"></td>
+                        </tr>
+                        <tr>
+                          <td>Birthday<br/><input type="date"></td>
+                          <td>Telephone<br/><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Email<br/><input type="email"></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Job Information</th>
+                          </tr>
+                          <tr>
+                            <td>Company<br/><input type="text"></td>
+                            <td>Title<br/><input type="text"></td>
+                          </tr>  
+                          <tr>
+                            <th colspan="2">Billing Address</th>
+                          </tr>
+                          <tr>
+                            <td>Country<br/><input type="text"></td>
+                            <td>State<br/><input type="text"></td>
+                          </tr>
+                          <tr>
+                            <td>City<br/><input type="text"></td>
+                            <td>Street<br/><input type="text"></td>                                
+                          </tr>  
+                          <tr>
+                              <td>Exterior Number<br/><input type="number"></td>
+                              <td>Interior Number<br/><input type="number"></td>                                  
+                          </tr>    
+                          <tr>
+                            <td>Suburb<br/><input type="text"></td>
+                              <td>Postal Code<br/><input type="text"></td>
+                          </tr>                                                 
+                      </table>
+                </div>
             </div>
 
             <div id="Weather" class="tabcontent">
                 <h3>Weather</h3>
-                <p>Who we are and what we do.</p>
+                
+                Weather information will be displayed here
             </div>
         <script> document.getElementById("defaultOpen").click();</script>
   </body>

@@ -74,6 +74,15 @@ header img{
 #Manage {background-color: blue;}
 #Weather {background-color: orange;}
 
+table{
+  background-color: #ECECEC;
+  color: #555;
+}
+
+table td input{
+  width: 95%;
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
