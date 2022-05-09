@@ -41,8 +41,6 @@ def main():
     else:
         main()
 
-
-
 def createTemplate():
     userData = {}
     userData['customer'] = []
@@ -55,7 +53,7 @@ def createTemplate():
                 'last_name2': input("Apellido Materno: "),
                 'birthDay' : input("Dia de nacimiento: "),
                 'birthMonth': input("Mes de nacimiento: "),
-                'birthYear': int(input("Año de nacimiento: ")),
+                'birthYear': input("Año de nacimiento: "),
                 'phone': input("Telefono:\t\t\t"),
                 'email': input("Correo:\t\t\t  ")
             },
@@ -74,8 +72,13 @@ def createTemplate():
             }
         }
     })
-    with open('data.json', 'w') as file:
-        json.dump(userData, file, indent=4)
+    with open('data.json', 'r+') as file:
+        #json.dump(userData, file, indent=4)
+        fileData = json.load(file)
+        fileData["client"].append(userData)
+        file.seek(0)
+        json.dump(fileData, file, indent=4)
+
     main()
 
 def showInformation():
@@ -83,14 +86,30 @@ def showInformation():
     with open('data.json') as file:
         data = json.load(file)
         for client in data['customer']:
-            print(client)
             contact = client['client']['Contact_Information']
-            print(f'Nombre: {contact["first_name"]}')
-            print(f'Apellido Paterno: {contact["last_name1"]}')
-            print(f'Apellido Materno: {contact["last_name2"]}')
-            print(f'Fecha de nacimiento: {contact["birthDay"]}-{contact["birthMonth"]}-{contact["birthYear"]}')
+            job = client['client']['Job_Information']
+            billing = client['client']['Billing_Information']
+
+            name = f'{contact["first_name"] } {contact["last_name1"]} {contact["last_name2"]}'
+
+            birthday = f'{contact["birthDay"]}-{contact["birthMonth"]}-{contact["birthYear"]}'
+
+            print(f'Nombre: {name}')
+            print(f'Fecha de nacimiento: {birthday}')
+
             print(f'Telefono: {contact["phone"]}')
             print(f'Correo: {contact["email"]}')
+
+            print(f'Empresa: {job["company"]}')
+            print(f'Cargo: {job["title"]}')
+
+            print(f'Calle de residencia: {billing["street"]}')
+            print(f'Numero Exterior: {billing["houseExt"]}')
+            print(f'Numero Interior: {billing["houseInt"]}')
+            print(f'Colonia: {billing["suburb"]}')
+            print(f'Ciudad: {billing["city"]}')
+            print(f'Estado: {billing["state"]}')
+            print(f'Codigo postal: {billing["postalCode"]}')
 
 def showTemplate():
     #Mostrar la base - dejar al final
@@ -112,6 +131,6 @@ def billingInformation():
 
 
 if __name__ == '__main__':
-    #main()
+    main()
     showInformation()
 
