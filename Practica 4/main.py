@@ -17,6 +17,7 @@ from datetime import date
 import os
 import json
 
+newFile = False
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
@@ -43,10 +44,9 @@ def main():
 
 def createTemplate():
     userData = {}
-    userData['customer'] = []
+    userData['client'] = []
 
-    userData['customer'].append({
-        'client': {
+    userData['client'].append({
             'Contact_Information': {
                 'first_name': basicInformation(),
                 'last_name1': input("Apellido Paterno: "),
@@ -70,12 +70,12 @@ def createTemplate():
                 'state': input("Estado:\t\t\t "),
                 'postalCode': input("Codigo postal:\t ")
             }
-        }
-    })
+        })
+
     with open('data.json', 'r+') as file:
         #json.dump(userData, file, indent=4)
         fileData = json.load(file)
-        fileData["client"].append(userData)
+        fileData["customer"].append(userData)
         file.seek(0)
         json.dump(fileData, file, indent=4)
 
@@ -85,31 +85,35 @@ def showInformation():
     #Obtener los datos
     with open('data.json') as file:
         data = json.load(file)
-        for client in data['customer']:
-            contact = client['client']['Contact_Information']
-            job = client['client']['Job_Information']
-            billing = client['client']['Billing_Information']
+        for clients in data['customer']:
+            for client in clients['client']:
+                print(f"Response = {client['Contact_Information']['first_name']}")
+                contact = client['Contact_Information']
+                job = client['Job_Information']
+                billing = client['Billing_Information']
 
-            name = f'{contact["first_name"] } {contact["last_name1"]} {contact["last_name2"]}'
+                name = f'{contact["first_name"]} {contact["last_name1"]} {contact["last_name2"]}'
 
-            birthday = f'{contact["birthDay"]}-{contact["birthMonth"]}-{contact["birthYear"]}'
+                birthday = f'{contact["birthDay"]}-{contact["birthMonth"]}-{contact["birthYear"]}'
 
-            print(f'Nombre: {name}')
-            print(f'Fecha de nacimiento: {birthday}')
+                print(f'Nombre: {name}')
+                print(f'Fecha de nacimiento: {birthday}')
 
-            print(f'Telefono: {contact["phone"]}')
-            print(f'Correo: {contact["email"]}')
+                print(f'Telefono: {contact["phone"]}')
+                print(f'Correo: {contact["email"]}')
 
-            print(f'Empresa: {job["company"]}')
-            print(f'Cargo: {job["title"]}')
+                print(f'Empresa: {job["company"]}')
+                print(f'Cargo: {job["title"]}')
 
-            print(f'Calle de residencia: {billing["street"]}')
-            print(f'Numero Exterior: {billing["houseExt"]}')
-            print(f'Numero Interior: {billing["houseInt"]}')
-            print(f'Colonia: {billing["suburb"]}')
-            print(f'Ciudad: {billing["city"]}')
-            print(f'Estado: {billing["state"]}')
-            print(f'Codigo postal: {billing["postalCode"]}')
+                print(f'Calle de residencia: {billing["street"]}')
+                print(f'Numero Exterior: {billing["houseExt"]}')
+                print(f'Numero Interior: {billing["houseInt"]}')
+                print(f'Colonia: {billing["suburb"]}')
+                print(f'Ciudad: {billing["city"]}')
+                print(f'Estado: {billing["state"]}')
+                print(f'Codigo postal: {billing["postalCode"]}')
+
+
 
 def showTemplate():
     #Mostrar la base - dejar al final
@@ -129,8 +133,19 @@ def billingInformation():
     print(f"{'*' * 37}\n*\t\t\tDomicilio\t\t\t\t*\n{'*' * 37}")
     return input("Calle:\t\t\t ")
 
+def createNewFile():
+    newFile = False
+    try:
+        file = open("data.json", "a+")
+        if os.stat("data.json").st_size == 0:
+            file.write('{\n\t"customer": []\n}')
+            file.close()
+    except:
+        newFile = True
+        print("Trono")
+
 
 if __name__ == '__main__':
+    createNewFile()
     main()
-    showInformation()
-
+    #showInformation()
