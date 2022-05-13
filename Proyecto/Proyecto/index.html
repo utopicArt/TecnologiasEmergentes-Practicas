@@ -161,7 +161,7 @@ print("Delete")
                 <div class="actions">
                   <py-button id="create2" label="💾 Save" title="Create new contact">
 def on_click(evt):
-  getData()
+  create_contact()
                   </py-button>                  
                   <py-button id="update2" label="🔃Update" title="Update contact">
 print("Update")
@@ -170,7 +170,8 @@ print("Update")
 print("Delete") 
                   </py-button>                    
                 </div>
-              <div id="out">_</div>
+                <p>Python Code Execution Status:</p>
+              <textarea id="out"></textarea>
             </div>
 
             <div id="Weather" class="tabcontent">

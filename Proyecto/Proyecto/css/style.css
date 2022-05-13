@@ -98,6 +98,11 @@ table th{
   text-align: left;
 }
 
+#out{
+  width: 100%;
+  height: 150px;
+}
+
 .actions{
   text-align: right;
   padding-top: 15px;

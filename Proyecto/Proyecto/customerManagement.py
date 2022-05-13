@@ -4,7 +4,7 @@ import json
 import os
 
 out = document.getElementById("out")
-out.innerHTML += "<p>⏳Cargando el código python...</p>"
+out.innerHTML += "⏳Cargando el código python..."
 
 def createNewFile():
     newFile = False
@@ -19,11 +19,11 @@ def createNewFile():
 
 def getInputData(id):
     data = document.getElementById(id).value
-    out.innerHTML += f"<p>Se obtuvo: {data}</p>"    
+    out.innerHTML += f"\\\nSe obtuvo: {data}\\\n"    
     return data
 
 def getData():
-    out.innerHTML += "<p>Obteniendo datos...</p>"
+    out.innerHTML += "\\\nObteniendo datos...\\\n"
     userData = {}
     userData['client'] = []
     userData['client'].append({
@@ -49,13 +49,19 @@ def getData():
                 'postalCode': getInputData("postalCode")
             }
         })
-    out.innerHTML += f"<p>✔️Cliente creado: {userData}</p>"
+    with open('data.json', 'r+') as file:
+        #json.dump(userData, file, indent=4)
+        fileData = json.load(file)
+        fileData["customer"].append(userData)
+        file.seek(0)
+        json.dump(fileData, file, indent=4)        
+    out.innerHTML += f"\\\n✔️Cliente creado: {userData}"
 
 
 def create_contact(*ags, **kws):
-    out.innerHTML += "<p>Verificando archivo...</p>"
+    out.innerHTML += "\\\n🛈 Verificando archivo de base de datos...\\\n"
     #createNewFile()
     #out.innerHTML += "<p>Obteniendo entrada del usuario...</p>"
     #getData()
 
-out.innerHTML += "✔️Cargado" 
+out.innerHTML += "\\\n✔️Cargado" 
