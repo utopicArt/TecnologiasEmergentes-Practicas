@@ -29,7 +29,7 @@ header img{
     margin: 0;
   }
   
-  #myUL li py-button {
+  #myUL li py-button button{
     width: 100%;
     border: 1px solid #ddd;
     margin-top: -1px; /* Prevent double borders */
@@ -42,7 +42,7 @@ header img{
     
   }
   
-  #myUL li py-button:hover {
+  #myUL li py-button button:hover {
     background-color: #eee;
     cursor: pointer;
   }

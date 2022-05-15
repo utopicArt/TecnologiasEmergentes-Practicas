@@ -11,6 +11,7 @@
           - paths:
             - ./utils.py
             - ./customerManagement.py
+            - ./data.json
         </py-env>            
         <title>Customer Management</title>
     </head>
@@ -33,61 +34,17 @@
             <button class="tablink" onclick="openPage('Weather', this, 'orange')" title="Show contact location weather">
                 Weather
             </button>
-
             <div id="Contacts" class="tabcontent">
                 <h3>Contact Information</h3>
-
                 <ul id="myUL">
                   <li id="element">
-                    <py-button id="data" label="Gustavo Adolfo" title="Gus">
+                    <py-button id="data100" label="Gustavo Adolfo" title="Gus">
                       def on_click(evt):
                         getDetails('Gustavo Adolfo')                 
                     </py-button>
-                  </li>
-                  <li id="element">
-                    <py-button id="data" label="Adele zamarripa" title="Gus">
-                      def on_click(evt):
-                        getDetails('Adele zamarripa')                   
-                    </py-button>
-                  </li>         
-                  <li id="element">
-                    <py-button id="data" label="Agnes" title="Gus">
-                      def on_click(evt):
-                        getDetails('Agnes')                     
-                    </py-button>
-                  </li>
-                  <li id="element">
-                    <py-button id="data" label="Billy cherokee" title="Gus">
-                      def on_click(evt):
-                        getDetails('Billy cherokee')                    
-                    </py-button>
-                  </li>
-                  <li id="element">
-                    <py-button id="data" label="Bob anderson" title="Gus">
-                      def on_click(evt):
-                        getDetails('Bob anderson')                     
-                    </py-button>
-                  </li>
-                  <li id="element">
-                    <py-button id="data" label="Calvin klein" title="Gus">
-                      def on_click(evt):
-                        getDetails('Calvin klein')                     
-                    </py-button>
-                  </li>
-                  <li id="element">
-                    <py-button id="data" label="Christina aguilera" title="Gus">
-                      def on_click(evt):
-                        getDetails('Christina aguilera')                    
-                    </py-button>
-                  </li>
-                  <li id="element">
-                    <py-button id="data" label="Cindy la regia" title="Gus">
-                      def on_click(evt):
-                        getDetails('Cindy la regia')                     
-                    </py-button>
-                  </li>                                                                                                                     
+                  </li>                                                                                                                   
                 </ul>
-                <textarea id="out"></textarea>
+                <textarea id="out" readonly></textarea>
             </div>
 
             <div id="Details" class="tabcontent">

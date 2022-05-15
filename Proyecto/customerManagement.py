@@ -4,7 +4,8 @@ import json
 import os
 
 out = document.getElementById("out")
-out.innerHTML += "⏳Cargando el código python..."
+out.innerHTML += "⏳Loading Python code..."
+isLoaded = False
 
 def createNewFile():
     newFile = False
@@ -55,10 +56,10 @@ def setData():
     #    fileData["customer"].append(userData)
     #    file.seek(0)
     #    json.dump(fileData, file, indent=4)        
-    out.innerHTML += f"\\\n✔️Cliente creado: {userData}"
+    out.innerHTML += f"\\\n✔️Client created successfully: {userData}"
 
-def on_click(user):
-    console.log(f"\\\n✔️Cliente seleccionado: {user}")
+def getDetails(user):
+    out.innerHTML += f"\\\n👉Customer selected: {user}"
 
 
 def create_contact(*ags, **kws):
@@ -67,4 +68,25 @@ def create_contact(*ags, **kws):
     #out.innerHTML += "<p>Obteniendo entrada del usuario...</p>"
     #setData()
 
-out.innerHTML += "\\\n✔️Cargado" 
+def getContactsName():
+    ul = document.getElementById('myUL')
+    with open('data.json') as file:
+        data = json.load(file)
+        counter = 0
+        for clients in data['customer']:
+            for client in clients['client']:
+                contact = client['Contact_Information']
+                name = f'{contact["first_name"]} {contact["last_name"]}'
+                out.innerHTML += '\\\nContact found: ' + name
+                ul.innerHTML += f"""
+                <li id='element'>                
+                    <py-button id='data{counter}' label='{name}' title='{name}'>
+                        def on_click(evt):
+                            getDetails('{name}')             
+                    </py-button>
+                </li>"""
+                counter += 1
+
+out.innerHTML += "\\\n✔️Python Loaded." 
+out.innerHTML += "\\\n📁Getting contacts..." 
+getContactsName()

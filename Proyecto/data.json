@@ -1,0 +1,60 @@
+{
+    "customer": [
+        {
+            "client": [
+                {
+                    "Contact_Information": {
+                        "first_name": "asd",
+                        "last_name": "asd asd",
+                        "birthDay": "asd",
+                        "birthMonth": "asd",
+                        "birthYear": "asd",
+                        "phone": "asd",
+                        "email": "asd"
+                    },
+                    "Job_Information": {
+                        "company": "asd",
+                        "title": "asd"
+                    },
+                    "Billing_Information": {
+                        "street": "asd",
+                        "houseExt": "asd",
+                        "houseInt": "asd",
+                        "suburb": "asd",
+                        "city": "asd",
+                        "state": "asd",
+                        "postalCode": "asd"
+                    }
+                }
+            ]
+        },
+        {
+            "client": [
+                {
+                    "Contact_Information": {
+                        "first_name": "jkljkl",
+                        "last_name": "jlk jkljkljkl",
+                        "birthDay": "jkljkl",
+                        "birthMonth": "jkljkl",
+                        "birthYear": "jkljkl",
+                        "phone": "jkljkl",
+                        "email": "jkljkl"
+                    },
+                    "Job_Information": {
+                        "company": "jkljkl",
+                        "title": "jkljkl"
+                    },
+                    "Billing_Information": {
+                        "street": "jkljkl",
+                        "houseExt": "jkljkl",
+                        "houseInt": "jkljkl",
+                        "suburb": "jkljkl",
+                        "city": "jkljkl",
+                        "state": "jkljkl",
+                        "postalCode": "jkljkl"
+                    }
+                }
+            ]
+        }
+    ]
+}
