@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="./js/tabController.js"></script>  
+        <script defer src="js/pyscript.js"></script>
+        <py-env>
+          - paths:
+            - ./utils.py
+            - ./customerManagement.py
+        </py-env>            
+        <title>Customer Management</title>
+    </head>
+    <body> 
+      <py-script src="./customerManagement.py"></py-script>
+        <header>
+            <img src="images/crm.png" alt="logo" />
+            <input type="text" id="myInput" onclick="document.getElementById('defaultOpen').click();" onkeyup="searchEngine()" placeholder="Search" title="Type in a name">
+        </header>
+        <div class="container">
+            <button class="tablink" onclick="openPage('Contacts', this, 'red')"  title="Show all contacts on database">
+                Contacts
+            </button>
+            <button class="tablink" onclick="openPage('Details', this, '#EB4B4B')" title="Show contact details">
+                Details
+            </button>
+            <button class="tablink" onclick="openPage('Manage', this, '#4225F5')" id="defaultOpen" title="Create, Update or Delete contact">
+                Manage
+            </button>
+            <button class="tablink" onclick="openPage('Weather', this, 'orange')" title="Show contact location weather">
+                Weather
+            </button>
+
+            <div id="Contacts" class="tabcontent">
+                <h3>Contact Information</h3>
+
+                <ul id="myUL">
+                    <li><a href="#">Adele zamarripa</a></li>
+                    <li><a href="#">Agnes</a></li>
+        
+                    <li><a href="#">Billy cherokee</a></li>
+                    <li><a href="#">Bob anderson</a></li>
+        
+                    <li><a href="#">Calvin klein</a></li>
+                    <li><a href="#">Christina aguilera</a></li>
+                    <li><a href="#">Cindy la regia</a></li>
+                </ul>
+            </div>
+
+            <div id="Details" class="tabcontent">
+                <h3>Details</h3>
+                <div id="Information">
+                    <div id="basicInfo">
+                        <table style="width:100%">
+                            <tr>
+                              <th colspan="2">Basic Information</th>
+                            </tr>
+                            <tr>
+                              <td>First Name<br/><input type="text"></td>
+                              <td>Last Name<br/><input type="text"></td>
+                            </tr>
+                            <tr>
+                              <td>Birthday<br/><input type="date"></td>
+                              <td>Telephone<br/><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>Email<br/><input type="email"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Job Information</th>
+                              </tr>
+                              <tr>
+                                <td>Company<br/><input type="text"></td>
+                                <td>Title<br/><input type="text"></td>
+                              </tr>  
+                              <tr>
+                                <th colspan="2">Billing Address</th>
+                              </tr>
+                              <tr>
+                                <td>Country<br/><input type="text"></td>
+                                <td>State<br/><input type="text"></td>
+                              </tr>
+                              <tr>
+                                <td>City<br/><input type="text"></td>
+                                <td>Street<br/><input type="text"></td>                                
+                              </tr>  
+                              <tr>
+                                  <td>Exterior Number<br/><input type="number"></td>
+                                  <td>Interior Number<br/><input type="number"></td>                                  
+                              </tr>    
+                              <tr>
+                                <td>Suburb<br/><input type="text"></td>
+                                  <td>Postal Code<br/><input type="text"></td>
+                              </tr>                                                 
+                          </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Manage" class="tabcontent">
+                <h3>Manage</h3>
+                <div class="actions">
+                  <py-button id="create" label="💾 Save" title="Create new contact">
+def on_click(evt):
+  getData()
+                  </py-button>                  
+                  <py-button id="update" label="🔃Update" title="Update contact">
+print("Update")
+                  </py-button>  
+                  <py-button id="delete" label="❌Delete" title="Delete contact">
+print("Delete") 
+                  </py-button>                    
+                </div>
+                <div id="basicInfo">
+                    <table style="width:100%">
+                        <tr>
+                          <th colspan="2">Basic Information</th>
+                        </tr>
+                        <tr>
+                          <td>First Name<br/><input type="text" id="first_name"></td>
+                          <td>Last Name<br/><input type="text" id="last_name"></td>
+                        </tr>
+                        <tr>
+                          <td>Birthday<br/><input type="date" id="birthday"></td>
+                          <td>Telephone<br/><input type="tel" id="phone"></td>
+                        </tr>
+                        <tr>
+                            <td>Email<br/><input type="email" id="email"></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Job Information</th>
+                          </tr>
+                          <tr>
+                            <td>Company<br/><input type="text" id="company"></td>
+                            <td>Title<br/><input type="text" id="title"></td>
+                          </tr>  
+                          <tr>
+                            <th colspan="2">Billing Address</th>
+                          </tr>
+                          <tr>
+                            <td>Country<br/><input type="text" id="country"></td>
+                            <td>State<br/><input type="text" id="state"></td>
+                          </tr>
+                          <tr>
+                            <td>City<br/><input type="text" id="city"></td>
+                            <td>Street<br/><textarea id="street"></textarea></td>                                
+                          </tr>  
+                          <tr>
+                              <td>Exterior Number<br/><input type="number" id="houseExt"></td>
+                              <td>Interior Number<br/><input type="number" id="houseInt"></td>                                  
+                          </tr>    
+                          <tr>
+                            <td>Suburb<br/><input type="text" id="suburb"></td>
+                            <td>Postal Code<br/><input type="text" id="postalCode"></td>
+                          </tr>                                                 
+                      </table>
+                </div>
+                <div class="actions">
+                  <py-button id="create2" label="💾 Save" title="Create new contact">
+def on_click(evt):
+  create_contact()
+                  </py-button>                  
+                  <py-button id="update2" label="🔃Update" title="Update contact">
+print("Update")
+                  </py-button>  
+                  <py-button id="delete2" label="❌Delete" title="Delete contact">
+print("Delete") 
+                  </py-button>                    
+                </div>
+                <p>Python Code Execution Status:</p>
+              <textarea id="out"></textarea>
+            </div>
+
+            <div id="Weather" class="tabcontent">
+                <h3>Weather</h3> 
+                
+                Weather information will be displayed here
+            </div>
+        <script> document.getElementById("defaultOpen").click();</script>
+  </body>
+</html>
