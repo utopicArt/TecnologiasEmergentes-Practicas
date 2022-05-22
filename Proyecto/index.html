@@ -25,7 +25,7 @@
             <button class="tablink" onclick="openPage('Contacts', this, 'red')"  title="Show all contacts on database" id="defaultOpen">
                 Contacts
             </button>
-            <button class="tablink" onclick="openPage('Details', this, '#EB4B4B')" title="Show contact details">
+            <button class="tablink" id="details" onclick="openPage('Details', this, '#EB4B4B')" title="Show contact details">
                 Details
             </button>
             <button class="tablink" onclick="openPage('Manage', this, '#4225F5')" title="Create, Update or Delete contact">
@@ -36,16 +36,9 @@
             </button>
             <div id="Contacts" class="tabcontent">
                 <h3>Contact Information</h3>
-                <ul id="myUL">
-                  <li id="element">
-                    <py-button id="data100" label="Gustavo Adolfo" title="Gus">
-                      def on_click(evt):
-                        getDetails('Gustavo Adolfo')                 
-                    </py-button>
-                  </li>                                                                                                                   
+                <ul id="myUL">                                                                                                                   
                 </ul>
-                <textarea id="out" readonly></textarea>
-            </div>
+            </div> 
 
             <div id="Details" class="tabcontent">
                 <h3>Details</h3>
@@ -168,7 +161,6 @@ print("Delete")
                   </py-button>                    
                 </div>
                 <p>Python Code Execution Status:</p>
-              <textarea id="out"></textarea>
             </div>
 
             <div id="Weather" class="tabcontent">
@@ -176,6 +168,8 @@ print("Delete")
                 
                 Weather information will be displayed here
             </div>
+
+            <textarea id="out"></textarea>
         <script> document.getElementById("defaultOpen").click();</script>
   </body>
 </html>

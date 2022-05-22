@@ -58,8 +58,9 @@ def setData():
     #    json.dump(fileData, file, indent=4)        
     out.innerHTML += f"\\\n✔️Client created successfully: {userData}"
 
-def getDetails(user):
+def getDetails(user, contact, job, billing):
     out.innerHTML += f"\\\n👉Customer selected: {user}"
+    document.getElementById("details").click()
 
 
 def create_contact(*ags, **kws):
@@ -76,16 +77,21 @@ def getContactsName():
         for clients in data['customer']:
             for client in clients['client']:
                 contact = client['Contact_Information']
+                job = client['Job_Information']
+                billing = client['Billing_Information']
+
                 name = f'{contact["first_name"]} {contact["last_name"]}'
                 out.innerHTML += '\\\nContact found: ' + name
-                ul.innerHTML += f"""
-                <li id='element'>                
-                    <py-button id='data{counter}' label='{name}' title='{name}'>
+                ul = document.getElementById('myUL')
+                ul.insertAdjacentHTML("beforeEnd", f"""
+                <li id=\"element\">                
+                    <py-button id=\"data{counter}\" label=\"{name}\" title=\"{name}\">
                         def on_click(evt):
-                            getDetails('{name}')             
+                            getDetails(\"{name}\", {contact}, {job}, {billing})             
                     </py-button>
-                </li>"""
+                </li>""")
                 counter += 1
+
 
 out.innerHTML += "\\\n✔️Python Loaded." 
 out.innerHTML += "\\\n📁Getting contacts..." 
